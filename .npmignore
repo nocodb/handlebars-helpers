@@ -1,0 +1,41 @@
+# Source files
+lib/
+index.ts
+tsconfig.json
+
+# Development files
+test/
+scripts/
+.git/
+.gitignore
+
+# Build artifacts that shouldn't be published
+*.log
+*.tgz
+
+# Development dependencies
+node_modules/
+pnpm-lock.yaml
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+
+# Documentation source (keep only compiled README.md)
+docs/
+
+# Only include the essentials:
+# - dist/ (built JavaScript)
+# - README.md (documentation)
+# - LICENSE (license)
+# - package.json (metadata)

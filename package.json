@@ -1,7 +1,7 @@
 {
-  "name": "handlebars-helpers",
-  "description": "More than 130 Handlebars helpers in ~20 categories. Helpers can be used with Assemble, Generate, Verb, Ghost, gulp-handlebars, grunt-handlebars, consolidate, or any node.js/Handlebars project.",
-  "version": "0.10.0",
+  "name": "handlebars-helpers-v2",
+  "description": "Essential Handlebars helpers in TypeScript. A modernized collection of 8 core helper categories with TypeScript support and ESM compatibility.",
+  "version": "1.0.0",
   "homepage": "https://github.com/helpers/handlebars-helpers",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "contributors": [
@@ -60,10 +60,20 @@
   },
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "engines": {
     "node": ">=20.0.0"
   },
@@ -71,7 +81,17 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "test": "pnpm build && mocha test/*.js",
-    "prepublishOnly": "pnpm build"
+    "lint": "echo 'Linting not configured yet'",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "prebuild": "pnpm clean",
+    "pretest": "pnpm build",
+    "prepublishOnly": "pnpm test",
+    "prepack": "pnpm build",
+    "prepare": "pnpm build",
+    "release": "scripts/release.sh",
+    "pack:test": "npm pack --dry-run",
+    "pack:real": "npm pack"
   },
   "packageManager": "pnpm@9.0.0",
   "dependencies": {
