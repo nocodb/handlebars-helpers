@@ -49,36 +49,86 @@ Object.keys(string).forEach(name => {
 });
 ```
 
+### Using Default Export
+
+```js
+import handlebarsHelpers from 'handlebars-helpers-v2';
+import Handlebars from 'handlebars';
+
+// Register all helpers automatically
+handlebarsHelpers({ handlebars: Handlebars });
+
+// Or get specific collections
+const arrayHelpers = handlebarsHelpers(['array']);
+const stringAndMathHelpers = handlebarsHelpers(['string', 'math']);
+
+// Or get all helpers as an object
+const allHelpers = handlebarsHelpers();
+```
+
+### Using Getter Functions
+
+```js
+import handlebarsHelpers from 'handlebars-helpers-v2';
+import Handlebars from 'handlebars';
+
+// Auto-register specific category
+handlebarsHelpers.array({ handlebars: Handlebars });
+handlebarsHelpers.string({ handlebars: Handlebars });
+
+// Or just get the helpers without registering
+const arrayHelpers = handlebarsHelpers.array();
+const stringHelpers = handlebarsHelpers.string();
+```
+
 ### CommonJS
 
 ```js
-const helpers = require('handlebars-helpers-v2');
+const { array, string, math } = require('handlebars-helpers-v2');
 const Handlebars = require('handlebars');
 
-// Register all array helpers
-Object.keys(helpers.array).forEach(name => {
-  Handlebars.registerHelper(name, helpers.array[name]);
+// Register specific helper categories
+Object.keys(array).forEach(name => {
+  Handlebars.registerHelper(name, array[name]);
 });
 
-// Register all string helpers  
-Object.keys(helpers.string).forEach(name => {
-  Handlebars.registerHelper(name, helpers.string[name]);
+Object.keys(string).forEach(name => {
+  Handlebars.registerHelper(name, string[name]);
 });
+```
+
+### CommonJS with Default Export
+
+```js
+const handlebarsHelpers = require('handlebars-helpers-v2').default;
+const Handlebars = require('handlebars');
+
+// Register all helpers automatically
+handlebarsHelpers({ handlebars: Handlebars });
+
+// Or use getter functions
+handlebarsHelpers.array({ handlebars: Handlebars });
+handlebarsHelpers.string({ handlebars: Handlebars });
 ```
 
 ### TypeScript
 
 ```ts
-import { array, string, math, StringHelpers } from 'handlebars-helpers-v2';
+import { array, string, math } from 'handlebars-helpers-v2';
+import handlebarsHelpers from 'handlebars-helpers-v2';
 import * as Handlebars from 'handlebars';
 
-// Full type support
-const stringHelpers: StringHelpers = string;
-
-// Register with types
+// Import named exports with full type support
 Object.entries(array).forEach(([name, helper]) => {
   Handlebars.registerHelper(name, helper);
 });
+
+// Or use default export with auto-registration
+handlebarsHelpers({ handlebars: Handlebars });
+
+// Or use getter functions with types
+const arrayHelpers = handlebarsHelpers.array();
+const stringHelpers = handlebarsHelpers.string();
 ```
 
 ## Helper Categories
