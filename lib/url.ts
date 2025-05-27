@@ -1,9 +1,24 @@
-'use strict';
+import * as url from 'url';
+import * as util from 'handlebars-utils';
+import * as querystring from 'querystring';
 
-var url = require('url');
-var util = require('handlebars-utils');
-var querystring = require('querystring');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
+
+/**
+ * Stringify an object to JSON.
+ * 
+ * ```handlebars
+ * {{JSONstringify obj}}
+ * <!-- results in: '{"foo":"bar"}' -->
+ * ```
+ * @param {Object} `obj` Object to stringify
+ * @return {String} JSON string
+ * @api public
+ */
+
+helpers.JSONstringify = function(obj) {
+  return JSON.stringify(obj);
+};
 
 /**
  * Encodes a Uniform Resource Identifier (URI) component
@@ -96,6 +111,23 @@ helpers.urlParse = function(str) {
 };
 
 /**
+ * Takes a parsed url object and returns a formatted url string.
+ *
+ * ```handlebars
+ * <!-- url = {protocol: 'https:', host: 'github.com', pathname: '/helpers/handlebars-helpers'} -->
+ * {{urlResolve url}}
+ * <!-- results in: 'https://github.com/helpers/handlebars-helpers' -->
+ * ```
+ * @param {Object} `urlObject` URL object
+ * @return {String}
+ * @api public
+ */
+
+helpers.urlFormat = function(urlObject) {
+  return url.format(urlObject);
+};
+
+/**
  * Strip the query string from the given `url`.
  *
  * @param {String} `url`
@@ -123,10 +155,12 @@ helpers.stripQuerystring = function(str) {
  * @api public
  */
 
-helpers.stripProtocol = function(str) {
+helpers.stripProtocol = function(str: any) {
   if (util.isString(str)) {
     var parsed = url.parse(str);
     parsed.protocol = '';
-    return parsed.format();
+    return url.format(parsed);
   }
 };
+
+export default helpers;

@@ -1,8 +1,7 @@
-'use strict';
+import * as util from 'handlebars-utils';
+import * as utils from './utils';
 
-var util = require('handlebars-utils');
-var utils = require('./utils');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Returns all of the items in an array after the specified index.
@@ -820,3 +819,5 @@ helpers.unique = function(array, options) {
     return arr.indexOf(item) === index;
   });
 };
+
+export default helpers;

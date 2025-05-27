@@ -1,11 +1,7 @@
-'use strict';
+import * as util from 'handlebars-utils';
+import * as utils from './utils';
 
-var util = require('handlebars-utils');
-var object = require('./object');
-var array = require('./array');
-var forEach = array.forEach;
-var forOwn = object.forOwn;
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Inline, subexpression, or block helper that returns true (or the block)
@@ -56,12 +52,14 @@ helpers.isEmpty = function(collection, options) {
  * @api public
  */
 
-helpers.iterate = function(collection, options) {
+helpers.iterate = function(collection: any, options: any) {
   if (Array.isArray(collection)) {
-    return forEach.apply(null, arguments);
+    return utils.forEach.apply(null, arguments);
   }
   if (util.isObject(collection)) {
-    return forOwn.apply(null, arguments);
+    return utils.forOwn.apply(null, arguments);
   }
   return options.inverse(this);
 };
+
+export default helpers;

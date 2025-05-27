@@ -3,8 +3,12 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.comparison({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register comparison helpers
+for (var name in helpers.comparison) {
+  hbs.registerHelper(name, helpers.comparison[name]);
+}
 
 describe('comparison', function() {
   describe('and', function() {

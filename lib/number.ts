@@ -1,9 +1,8 @@
-'use strict';
+// Remove import as we use our own isNumber function from utils
+import * as util from 'handlebars-utils';
+import * as utils from './utils';
 
-var isNumber = require('is-number');
-var util = require('handlebars-utils');
-var utils = require('./utils');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Format a number to it's equivalent in bytes. If a string is passed,
@@ -154,7 +153,7 @@ helpers.toFixed = function(number, digits) {
   if (!utils.isNumber(number)) {
     number = 0;
   }
-  if (!isNumber(digits)) {
+  if (!utils.isNumber(digits)) {
     digits = 0;
   }
   return Number(number).toFixed(digits);
@@ -193,12 +192,14 @@ helpers.toInt = function(number) {
  * @api public
  */
 
-helpers.toPrecision = function(number, precision) {
+helpers.toPrecision = function(number: any, precision: any) {
   if (!utils.isNumber(number)) {
     number = 0;
   }
-  if (!isNumber(precision)) {
+  if (!utils.isNumber(precision)) {
     precision = 1;
   }
   return Number(number).toPrecision(precision);
 };
+
+export default helpers;

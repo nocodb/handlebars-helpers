@@ -1,5 +1,7 @@
-'use strict';
-var helpers = module.exports;
+import * as year from 'year';
+import * as helperDate from 'helper-date';
+
+const helpers: Record<string, Function> = {};
 
 /**
  * Get the current year.
@@ -12,7 +14,7 @@ var helpers = module.exports;
  * @api public
  */
 
-helpers.year = require('year');
+helpers.year = year;
 
 /**
  * Use [moment][] as a helper. See [helper-date][] for more details.
@@ -21,4 +23,6 @@ helpers.year = require('year');
  * @api public
  */
 
-helpers.moment = helpers.date = require('helper-date');
+helpers.moment = helpers.date = helperDate;
+
+export default helpers;

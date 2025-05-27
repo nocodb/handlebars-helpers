@@ -3,9 +3,19 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.array({handlebars: hbs});
-helpers.string({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register array helpers
+for (var name in helpers.array) {
+  hbs.registerHelper(name, helpers.array[name]);
+}
+
+// Register some string helpers needed for tests
+for (var name in helpers.string) {
+  if (['split', 'reverse', 'stringify'].includes(name)) {
+    hbs.registerHelper(name, helpers.string[name]);
+  }
+}
 
 var context = {array: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], duplicate: [ 'a', 'b', 'b', 'c', 'd', 'b', 'f', 'a', 'g']};
 
@@ -381,8 +391,11 @@ describe('array', function() {
 
     it('should sort based on object key:', function() {
       var ctx = {arr: [{a: 'zzz'}, {a: 'aaa'}]};
-      hbs.registerHelper(helpers.object());
-      var fn = hbs.compile('{{{stringify (sortBy arr "a") 0}}}');
+      // Register a simple stringify helper for this test
+      hbs.registerHelper('stringify', function(obj) {
+        return JSON.stringify(obj);
+      });
+      var fn = hbs.compile('{{{stringify (sortBy arr "a")}}}');
       assert.equal(fn(ctx), '[{"a":"aaa"},{"a":"zzz"}]');
     });
   });

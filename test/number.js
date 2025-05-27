@@ -3,8 +3,12 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.number({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register number helpers
+for (var name in helpers.number) {
+  hbs.registerHelper(name, helpers.number[name]);
+}
 
 describe('number', function() {
   describe('bytes', function() {

@@ -3,10 +3,22 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.array({handlebars: hbs});
-helpers.collection({handlebars: hbs});
-helpers.string({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register array helpers
+for (var name in helpers.array) {
+  hbs.registerHelper(name, helpers.array[name]);
+}
+
+// Register collection helpers
+for (var name in helpers.collection) {
+  hbs.registerHelper(name, helpers.collection[name]);
+}
+
+// Register string helpers
+for (var name in helpers.string) {
+  hbs.registerHelper(name, helpers.string[name]);
+}
 
 var context = {array: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']};
 

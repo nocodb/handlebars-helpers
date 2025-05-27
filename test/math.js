@@ -3,8 +3,12 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.math({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register math helpers
+for (var name in helpers.math) {
+  hbs.registerHelper(name, helpers.math[name]);
+}
 
 describe('math', function() {
   describe('add', function() {

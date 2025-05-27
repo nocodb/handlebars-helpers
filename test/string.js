@@ -3,8 +3,12 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.string({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register string helpers
+for (var name in helpers.string) {
+  hbs.registerHelper(name, helpers.string[name]);
+}
 
 describe('string', function() {
   describe('camelcase', function() {

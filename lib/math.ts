@@ -1,8 +1,7 @@
-'use strict';
+// Remove import as we use our own isNumber function from utils
+import * as utils from './utils';
 
-var isNumber = require('is-number');
-var utils = require('./utils');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Return the magnitude of `a`.
@@ -13,7 +12,7 @@ var helpers = module.exports;
  */
 
 helpers.abs = function(num) {
-  if (!isNumber(num)) {
+  if (!utils.isNumber(num)) {
     throw new TypeError('expected a number');
   }
   return Math.abs(num);
@@ -29,7 +28,7 @@ helpers.abs = function(num) {
  */
 
 helpers.add = function(a, b) {
-  if (isNumber(a) && isNumber(b)) {
+  if (utils.isNumber(a) && utils.isNumber(b)) {
     return Number(a) + Number(b);
   }
   if (typeof a === 'string' && typeof b === 'string') {
@@ -67,7 +66,7 @@ helpers.avg = function() {
  */
 
 helpers.ceil = function(num) {
-  if (!isNumber(num)) {
+  if (!utils.isNumber(num)) {
     throw new TypeError('expected a number');
   }
   return Math.ceil(num);
@@ -82,10 +81,10 @@ helpers.ceil = function(num) {
  */
 
 helpers.divide = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) / Number(b);
@@ -100,7 +99,7 @@ helpers.divide = function(a, b) {
  */
 
 helpers.floor = function(num) {
-  if (!isNumber(num)) {
+  if (!utils.isNumber(num)) {
     throw new TypeError('expected a number');
   }
   return Math.floor(num);
@@ -116,10 +115,10 @@ helpers.floor = function(num) {
  */
 
 helpers.minus = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) - Number(b);
@@ -135,10 +134,10 @@ helpers.minus = function(a, b) {
  */
 
 helpers.modulo = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) % Number(b);
@@ -155,10 +154,10 @@ helpers.modulo = function(a, b) {
  */
 
 helpers.multiply = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) * Number(b);
@@ -173,10 +172,10 @@ helpers.multiply = function(a, b) {
  */
 
 helpers.plus = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) + Number(b);
@@ -192,10 +191,10 @@ helpers.plus = function(a, b) {
  */
 
 helpers.random = function(min, max) {
-  if (!isNumber(min)) {
+  if (!utils.isNumber(min)) {
     throw new TypeError('expected minimum to be a number');
   }
-  if (!isNumber(max)) {
+  if (!utils.isNumber(max)) {
     throw new TypeError('expected maximum to be a number');
   }
   return utils.random(min, max);
@@ -222,7 +221,7 @@ helpers.remainder = function(a, b) {
  */
 
 helpers.round = function(num) {
-  if (!isNumber(num)) {
+  if (!utils.isNumber(num)) {
     throw new TypeError('expected a number');
   }
   return Math.round(num);
@@ -239,10 +238,10 @@ helpers.round = function(num) {
  */
 
 helpers.subtract = function(a, b) {
-  if (!isNumber(a)) {
+  if (!utils.isNumber(a)) {
     throw new TypeError('expected the first argument to be a number');
   }
-  if (!isNumber(b)) {
+  if (!utils.isNumber(b)) {
     throw new TypeError('expected the second argument to be a number');
   }
   return Number(a) - Number(b);
@@ -286,3 +285,5 @@ helpers.sum = function() {
 helpers.times = function() {
   return helpers.multiply.apply(this, arguments);
 };
+
+export default helpers;

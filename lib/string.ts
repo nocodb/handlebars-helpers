@@ -1,9 +1,8 @@
-'use strict';
+// Remove import as we use our own isNumber function from utils
+import * as util from 'handlebars-utils';
+import * as utils from './utils';
 
-var isNumber = require('is-number');
-var util = require('handlebars-utils');
-var utils = require('./utils');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Append the specified `suffix` to the given string.
@@ -602,7 +601,7 @@ helpers.titleize = function(str) {
   var i = 0;
   while (len--) {
     var word = words[i++];
-    res.push(exports.capitalize(word));
+    res.push(helpers.capitalize(word));
   }
   return res.join(' ');
 };
@@ -710,7 +709,7 @@ helpers.truncate = function(str, limit, suffix) {
  */
 
 helpers.truncateWords = function(str, count, suffix) {
-  if (util.isString(str) && isNumber(count)) {
+  if (util.isString(str) && utils.isNumber(count)) {
     if (typeof suffix !== 'string') {
       suffix = '…';
     }
@@ -760,10 +759,12 @@ helpers.upcase = function() {
  * @api public
  */
 
-helpers.uppercase = function(str) {
+helpers.uppercase = function(str: any) {
   if (util.isObject(str) && str.fn) {
     return str.fn(this).toUpperCase();
   }
   if (!util.isString(str)) return '';
   return str.toUpperCase();
 };
+
+export default helpers;

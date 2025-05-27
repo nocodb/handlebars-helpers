@@ -3,9 +3,17 @@
 require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
-var helpers = require('..');
-helpers.object({handlebars: hbs});
-helpers.url({handlebars: hbs});
+var helpers = require('../dist');
+
+// Register object helpers
+for (var name in helpers.object) {
+  hbs.registerHelper(name, helpers.object[name]);
+}
+
+// Register url helpers
+for (var name in helpers.url) {
+  hbs.registerHelper(name, helpers.url[name]);
+}
 
 describe('url', function() {
   describe('urlResolve', function() {

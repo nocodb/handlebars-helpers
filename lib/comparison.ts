@@ -1,9 +1,8 @@
-'use strict';
+import has from 'has-value';
+import * as util from 'handlebars-utils';
+import * as utils from './utils';
 
-var has = require('has-value');
-var util = require('handlebars-utils');
-var utils = require('./utils');
-var helpers = module.exports;
+const helpers: Record<string, Function> = {};
 
 /**
  * Helper that renders the block if **both** of the given values
@@ -595,10 +594,12 @@ helpers.unlessGteq = function(a, b, options) {
  * @api public
  */
 
-helpers.unlessLteq = function(a, b, options) {
+helpers.unlessLteq = function(a: any, b: any, options: any) {
   if (util.isOptions(b)) {
     options = b;
     b = options.hash.compare;
   }
   return util.value(a > b, this, options);
 };
+
+export default helpers;
