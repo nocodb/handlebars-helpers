@@ -2,9 +2,10 @@
   "name": "handlebars-helpers-v2",
   "description": "Essential Handlebars helpers in TypeScript. A modernized collection of 8 core helper categories with TypeScript support and ESM compatibility.",
   "version": "1.0.0",
-  "homepage": "https://github.com/helpers/handlebars-helpers",
-  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "homepage": "https://github.com/nocodb/handlebars-helpers",
+  "author": "Anbarasu (https://github.com/DarkPhoenix2704)",
   "contributors": [
+    "Jon Schlinkert (https://github.com/jonschlinkert)",
     "Adrián Mugnolo (https://github.com/xymbol)",
     "Aleš Kotnik (www.draagle.com)",
     "Alex Hunt (https://alexhunt.io)",
@@ -54,9 +55,9 @@
     "Tim Douglas (https://github.com/timdouglas)",
     "(https://github.com/homersimpsons)"
   ],
-  "repository": "helpers/handlebars-helpers",
+  "repository": "nocodb/handlebars-helpers",
   "bugs": {
-    "url": "https://github.com/helpers/handlebars-helpers/issues"
+    "url": "https://github.com/nocodb/handlebars-helpers/issues"
   },
   "license": "MIT",
   "files": [

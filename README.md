@@ -1,4 +1,4 @@
-# handlebars-helpers
+# handlebars-helpers-v2
 
 > Essential Handlebars helpers in TypeScript. A modernized collection of 8 core helper categories with TypeScript support and ESM compatibility.
 
@@ -16,19 +16,19 @@
 Install with npm:
 
 ```sh
-npm install handlebars-helpers
+npm install handlebars-helpers-v2
 ```
 
 Install with pnpm:
 
 ```sh
-pnpm add handlebars-helpers
+pnpm add handlebars-helpers-v2
 ```
 
 Install with yarn:
 
 ```sh
-yarn add handlebars-helpers
+yarn add handlebars-helpers-v2
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ yarn add handlebars-helpers
 ### ES Modules (Recommended)
 
 ```js
-import { array, string, math } from 'handlebars-helpers';
+import { array, string, math } from 'handlebars-helpers-v2';
 import Handlebars from 'handlebars';
 
 // Register specific helper categories
@@ -52,7 +52,7 @@ Object.keys(string).forEach(name => {
 ### CommonJS
 
 ```js
-const helpers = require('handlebars-helpers');
+const helpers = require('handlebars-helpers-v2');
 const Handlebars = require('handlebars');
 
 // Register all array helpers
@@ -69,7 +69,7 @@ Object.keys(helpers.string).forEach(name => {
 ### TypeScript
 
 ```ts
-import { array, string, math, StringHelpers } from 'handlebars-helpers';
+import { array, string, math, StringHelpers } from 'handlebars-helpers-v2';
 import * as Handlebars from 'handlebars';
 
 // Full type support
@@ -208,7 +208,7 @@ import {
   number,     // Number helpers
   string,     // String helpers
   url         // URL helpers
-} from 'handlebars-helpers';
+} from 'handlebars-helpers-v2';
 ```
 
 ### Individual Helpers
@@ -271,10 +271,19 @@ pnpm typecheck
 
 Released under the [MIT License](LICENSE).
 
+## Credits
+
+This project is a TypeScript rewrite and modernization of the original [handlebars-helpers](https://github.com/helpers/handlebars-helpers) by [Jon Schlinkert](https://github.com/jonschlinkert) and contributors. The original project provided the foundation and inspiration for this modern implementation.
+
+**Original Repository**: https://github.com/helpers/handlebars-helpers  
+**Original Author**: Jon Schlinkert  
+**License**: MIT (maintained)
+
 ## Related
 
 - [handlebars](https://handlebarsjs.com/) - The semantic template language
 - [template-helpers](https://github.com/jonschlinkert/template-helpers) - Generic template helpers
+- [handlebars-helpers](https://github.com/helpers/handlebars-helpers) - Original handlebars-helpers project
 
 ---
 

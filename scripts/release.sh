@@ -86,11 +86,7 @@ pnpm build
 # Add and commit version bump
 echo "📝 Committing version bump..."
 git add package.json
-git commit -m "chore: bump version to $NEW_VERSION
-
-🤖 Generated with release script
-
-Co-Authored-By: Claude <noreply@anthropic.com>"
+git commit -m "chore: bump version to $NEW_VERSION"
 
 # Create git tag
 echo "🏷️  Creating git tag..."
