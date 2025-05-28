@@ -1,7 +1,7 @@
 {
   "name": "handlebars-helpers-v2",
   "description": "Essential Handlebars helpers in TypeScript. A modernized collection of 8 core helper categories with TypeScript support and ESM compatibility.",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "homepage": "https://github.com/nocodb/handlebars-helpers",
   "author": "Anbarasu (https://github.com/DarkPhoenix2704)",
   "contributors": [
