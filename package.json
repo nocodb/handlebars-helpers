@@ -104,13 +104,14 @@
     "handlebars-utils": "^1.0.6",
     "has-value": "^1.0.0",
     "helper-date": "^1.0.1",
+    "semver": "^7.7.2",
     "year": "^0.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.0.0",
+    "handlebars": "^4.7.8",
     "mocha": "^10.0.0",
-    "handlebars": "^4.7.8"
+    "typescript": "^5.0.0"
   },
   "keywords": [
     "array",
